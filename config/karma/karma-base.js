@@ -18,7 +18,6 @@ delete webpackConfig.entry;
 webpackConfig.module.rules.push({
   test: /\.js$/,
   include: path.resolve('./src/'),
-  loader: 'istanbul-instrumenter-loader',
   options: {
     esModules: true,
   },
