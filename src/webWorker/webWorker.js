@@ -27,7 +27,7 @@ function initialize(data) {
   // load any additional web worker tasks
   if (data.config.webWorkerTaskPaths) {
     for (let i = 0; i < data.config.webWorkerTaskPaths.length; i++) {
-      self.importScripts(data.config.webWorkerTaskPaths[i]);
+      // self.importScripts(data.config.webWorkerTaskPaths[i]);
     }
   }
 
@@ -73,7 +73,7 @@ export function registerTaskHandler(taskHandler) {
  */
 function loadWebWorkerTask(data) {
   config = data.config;
-  self.importScripts(data.sourcePath);
+  // self.importScripts(data.sourcePath);
 }
 
 /**
