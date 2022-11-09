@@ -1,3 +1,5 @@
+import jpeg from '../../../codecs/jpegLossless.js';
+
 const local = {
   jpeg: undefined,
   decodeConfig: {},
@@ -10,12 +12,7 @@ export function initialize(decodeConfig) {
     return Promise.resolve();
   }
 
-  return new Promise((resolve, reject) => {
-    import('../../../codecs/jpegLossless.js').then((jpeg) => {
-      local.jpeg = jpeg;
-      resolve();
-    }, reject);
-  });
+  local.jpeg = jpeg;
 }
 
 async function decodeJPEGLossless(imageFrame, pixelData) {

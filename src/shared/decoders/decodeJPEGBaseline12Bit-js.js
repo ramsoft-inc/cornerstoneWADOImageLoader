@@ -1,3 +1,5 @@
+import JpegImage from '../../../codecs/jpeg.js';
+
 const local = {
   JpegImage: undefined,
   decodeConfig: {},
@@ -10,12 +12,7 @@ export function initialize(decodeConfig) {
     return Promise.resolve();
   }
 
-  return new Promise((resolve, reject) => {
-    import('../../../codecs/jpeg.js').then(({ JpegImage }) => {
-      local.JpegImage = JpegImage;
-      resolve();
-    }, reject);
-  });
+  local.JpegImage = JpegImage;
 }
 
 async function decodeJPEGBaseline12BitAsync(imageFrame, pixelData) {
