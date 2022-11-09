@@ -94,6 +94,7 @@ function removeAFromRGBA(imageFrame, targetBuffer) {
 }
 
 function createImage(imageId, pixelData, transferSyntax, options = {}) {
+  console.log('transferSyntax', transferSyntax);
   // whether to use RGBA for color images, default true as cs-legacy uses RGBA
   // but we don't need RGBA in cs3d, and it's faster, and memory-efficient
   // in cs3d
