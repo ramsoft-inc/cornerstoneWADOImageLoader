@@ -53,11 +53,11 @@ function initialize(data) {
  */
 export function registerTaskHandler(taskHandler) {
   if (taskHandlers[taskHandler.taskType]) {
-    console.log(
-      'attempt to register duplicate task handler "',
-      taskHandler.taskType,
-      '"'
-    );
+    // console.log(
+    //   'attempt to register duplicate task handler "',
+    //   taskHandler.taskType,
+    //   '"'
+    // );
 
     return false;
   }
@@ -82,7 +82,7 @@ function loadWebWorkerTask(data) {
  */
 self.onmessage = function (msg) {
   if (!msg.data.taskType) {
-    console.log(msg.data);
+    // console.log(msg.data);
 
     return;
   }
@@ -121,7 +121,7 @@ self.onmessage = function (msg) {
         }
       );
     } catch (error) {
-      console.log(`task ${msg.data.taskType} failed - ${error.message}`);
+      // console.log(`task ${msg.data.taskType} failed - ${error.message}`);
       self.postMessage({
         taskType: msg.data.taskType,
         status: 'failed',
@@ -134,8 +134,8 @@ self.onmessage = function (msg) {
   }
 
   // not task handler registered - send a failure message back to ui thread
-  console.log('no task handler for ', msg.data.taskType);
-  console.log(taskHandlers);
+  // console.log('no task handler for ', msg.data.taskType);
+  // console.log(taskHandlers);
 
   self.postMessage({
     taskType: msg.data.taskType,
