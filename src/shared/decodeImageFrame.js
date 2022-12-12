@@ -256,6 +256,8 @@ function postProcessDecodedPixels(imageFrame, options, start) {
 
   imageFrame.decodeTimeInMS = end - start;
 
+  console.log(end - start);
+
   return imageFrame;
 }
 
