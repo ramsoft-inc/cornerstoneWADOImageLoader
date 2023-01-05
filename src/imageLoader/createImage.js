@@ -1,6 +1,6 @@
 import external from '../externalModules.js';
 import getImageFrame from './getImageFrame.js';
-import decodeImageFrame from './decodeImageFrame-noWorkers.js';
+import decodeImageFrame from './decodeImageFrame.js';
 import isColorImageFn from './isColorImage.js';
 import convertColorSpace from './convertColorSpace.js';
 import getMinMax from '../shared/getMinMax.js';
