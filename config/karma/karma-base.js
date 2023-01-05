@@ -18,6 +18,7 @@ delete webpackConfig.entry;
 webpackConfig.module.rules.push({
   test: /\.js$/,
   include: path.resolve('./src/'),
+  loader: 'coverage-istanbul-loader',
   options: {
     esModules: true,
   },
