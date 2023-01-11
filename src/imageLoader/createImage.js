@@ -201,10 +201,14 @@ function createImage(imageId, pixelData, transferSyntax, options = {}) {
         // Arrays of different types, which aren't simply memcpy ops.
         let typedArray;
 
-        if (arrayBuffer) {
-          typedArray = new TypedArrayConstructor(arrayBuffer, offset, length);
-        } else {
-          typedArray = new TypedArrayConstructor(imageFrame.pixelData);
+        try {
+          if (arrayBuffer) {
+            typedArray = new TypedArrayConstructor(arrayBuffer, offset, length);
+          } else {
+            typedArray = new TypedArrayConstructor(imageFrame.pixelData);
+          }
+        } catch (error) {
+          reject(error);
         }
 
         // If need to scale, need to scale correct array.
