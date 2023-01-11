@@ -43,6 +43,7 @@ function getPixelData(uri, imageId, mediaType = 'application/octet-stream') {
       try {
         new Uint8Array(imageFrameAsArrayBuffer);
       } catch (error) {
+        reject(error);
         return;
       }
 
@@ -86,6 +87,13 @@ function getPixelData(uri, imageId, mediaType = 'application/octet-stream') {
 
       // Remove \r\n from the length
       const length = endIndex - offset - 2;
+
+      try {
+        new Uint8Array(imageFrameAsArrayBuffer, offset, length);
+      } catch (error) {
+        reject(error);
+        return;
+      }
 
       // return the info for this pixel data
       resolve({
