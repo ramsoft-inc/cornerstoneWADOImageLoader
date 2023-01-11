@@ -101,13 +101,17 @@ function loadImage(imageId, options = {}) {
             options
           );
 
-          imagePromise.then((image) => {
-            // add the loadTimeInMS property
-            const end = new Date().getTime();
+          imagePromise
+            .then((image) => {
+              // add the loadTimeInMS property
+              const end = new Date().getTime();
 
-            image.loadTimeInMS = end - start;
-            resolve(image);
-          }, reject);
+              image.loadTimeInMS = end - start;
+              resolve(image);
+            }, reject)
+            .catch((error) => {
+              reject(error);
+            });
         }, reject)
         .catch((error) => {
           reject(error);
