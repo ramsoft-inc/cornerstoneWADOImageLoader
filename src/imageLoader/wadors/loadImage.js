@@ -94,24 +94,25 @@ function loadImage(imageId, options = {}) {
           );
 
           const pixelData = result.imageFrame.pixelData;
-          const imagePromise = createImage(
-            imageId,
-            pixelData,
-            transferSyntax,
-            options
-          );
 
-          imagePromise
-            .then((image) => {
+          try {
+            const imagePromise = createImage(
+              imageId,
+              pixelData,
+              transferSyntax,
+              options
+            );
+
+            imagePromise.then((image) => {
               // add the loadTimeInMS property
               const end = new Date().getTime();
 
               image.loadTimeInMS = end - start;
               resolve(image);
-            }, reject)
-            .catch((error) => {
-              reject(error);
-            });
+            }, reject);
+          } catch (error) {
+            console.log(error);
+          }
         }, reject)
         .catch((error) => {
           reject(error);
